@@ -1,4 +1,7 @@
-## Notas de zoologico
+# Martes 08 de Agosto:
+
+
+## -  Notas de zoologico
 
 ### Funcionamiento | Fin 
 
@@ -53,3 +56,59 @@ Las principales funciones de un zoo son las siguientes:
 
 
 <img src="resources/elefante.jpg" width="50%" style="margin: 30px">
+
+
+## ***Modelo entidad relación:***
+
+<img src="resources/mer_zoologico.png" width="80%" style="margin-top: 30px">
+
+
+
+## Funcionamiento de Notion 
+
+En Notion, las tareas se gestionan mediante su sistema flexible de bases de datos y bloques de contenido, lo que lo convierte en una herramienta potente para el trabajo colaborativo. 
+
+- **Creación de una base de datos o página de tareas:** En Notion, puedes crear una base de datos dedicada a las tareas o simplemente una página donde organices las tareas. La base de datos ofrece más flexibilidad y opciones de organización, pero ambas opciones pueden utilizarse para gestionar tareas.
+
+- **Agregar propiedades y campos:** En una base de datos de tareas, puedes definir propiedades personalizadas para las tareas, como fecha de vencimiento, asignación a miembros del equipo, prioridad, estado, etiquetas, etc. Estas propiedades ayudan a categorizar y filtrar las tareas de manera efectiva.
+
+- **Crear tareas como entradas en la base de datos:** Cada tarea se crea como una entrada en la base de datos o como un bloque en la página. Puedes ingresar información relevante sobre la tarea, como título, descripción, fechas importantes y cualquier otra propiedad que hayas definido.
+
+- **Asignar tareas a miembros del equipo:** Puedes asignar tareas a miembros específicos del equipo mediante las propiedades personalizadas. Esto permite una asignación clara y evita confusiones sobre quién es responsable de cada tarea.
+
+- **Establecer fechas de vencimiento:** Notion permite definir fechas de vencimiento para las tareas. Puedes usar el calendario integrado para visualizar las tareas por fecha y evitar retrasos.
+
+- **Seguimiento del estado:** Puedes crear un campo de estado para las tareas (por ejemplo: "Por hacer", "En progreso", "Completado") y actualizarlo según el progreso. Esto ayuda a todos los colaboradores a entender rápidamente en qué etapa se encuentra cada tarea.
+
+- **Colaboración en tiempo real:** Notion facilita la colaboración en tiempo real. Varios miembros del equipo pueden acceder y editar las tareas simultáneamente, lo que agiliza el trabajo conjunto.
+
+- **Comentarios y discusiones:** En cada tarea, es posible agregar comentarios y mantener discusiones relevantes. Esto permite que los miembros del equipo intercambien información, aclaren detalles y realicen seguimiento del progreso.
+
+- **Filtros y vistas personalizadas:** Las bases de datos en Notion permiten crear vistas personalizadas, como listas, tablas, calendarios, kanban, etc. Puedes filtrar y ordenar las tareas según tus necesidades, lo que facilita la visualización de la información relevante.
+
+- **Integraciones y automatizaciones:** Notion se integra con diversas herramientas y servicios, lo que puede mejorar la eficiencia y automatizar ciertas tareas. Por ejemplo, puedes conectar calendarios, herramientas de gestión de proyectos, enviar notificaciones, entre otras cosas.
+
+
+### Pasos para la integracion de tareas y gestion de proyectos: 
+
+- Invita a colaboradores 
+
+<img src="resources/colaboradores.png" width="70%" style="margin-top: 20px">
+
+- Crea la base de datos o paginas para la gestion de tareas
+
+<img src="resources/bd.png" width="40%" style="margin-top: 20px">
+
+- Define y organiza las propiedades y campos de forma personalizada: 
+
+<img src="resources/task.png" width="70%" style="margin-top: 20px">
+
+
+## Contacto 
+
+integrantes: 
+
+- Miller Kaled Nariño Ibarra | kalednarino@gmail.com
+
+- Jhon David Hernandez Ferrer | yonif975@gmail.com
+
