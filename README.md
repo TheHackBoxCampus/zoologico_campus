@@ -58,6 +58,19 @@ Las principales funciones de un zoo son las siguientes:
 <img src="resources/elefante.jpg" width="50%" style="margin: 30px">
 
 
+
+
+| Tener en cuenta           | Posibles campos a Tener en cuenta                            |
+| ------------------------- | ------------------------------------------------------------ |
+| **Animales**              | - Nombre científico y común. <br />- Origen y hábitat natural.<br />-  Dieta y requisitos alimenticios.<br />  - Información de salud y cuidados veterinarios.<br /> - Comportamiento y necesidades de enriquecimiento.<br /> |
+| **Instalaciones**         | - Diseño y planificación de recintos.<br /> - Tipo de hábitat (selva, sabana, acuático, etc.).<br /> - Elementos de seguridad para los animales y visitantes. <br />- Disposición de jaulas, cercas y áreas de exhibición. |
+| **Cuidados**              | -Rutinas de alimentación y horarios. <br />- Programas de enriquecimiento para estimular comportamientos naturales. <br />- Protocolos de salud y seguimiento veterinario. <br />- Manejo de residuos y limpieza de instalaciones. |
+| **Personal**              | - Roles y responsabilidades del personal (cuidadores, veterinarios, guías, etc.). <br />- Capacitación y formación del personal.<br /> - Turnos y horarios de trabajo. Comunicación interna y gestión de emergencias. |
+| **Clientes y Visitantes** | - Sistema de entradas y boletos. <br />- Horarios de operación y tarifas. <br />- Experiencia del visitante y educación ambiental. <br />- Actividades interactivas, espectáculos y exhibiciones. |
+
+
+
+
 ## ***Modelo entidad relación:***
 
 <img src="resources/mer_zoologico.png" width="80%" style="margin-top: 30px">
