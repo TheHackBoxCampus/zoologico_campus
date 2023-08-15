@@ -117,7 +117,23 @@ latinoamericacampus233@gmail.com
 <img src="resources/task.png" width="70%" style="margin-top: 20px">
 
 ## Como cambiar el estado de las tareas en notion automaticamente con pull Request
-#### 
+
+- Primero conecta el Notion con tu area de trabajo en github
+
+Pasos: 
+
+- Ve a ``configuracion y miembros``
+- Una vez alli te diriges a ``Mis conecciones``
+- Encontraras una interfaz como la siguiente: 
+
+<img src="resources/github_psr.png" width="70%">
+
+- Te conectas con tu repositorio: 
+
+<img src="resources/github_connectar.png" width="70%">
+
+- Listo prodras empezar a conectar tus PRs con Notion
+
 
 # Miercoles 09 de Agosto:
 
