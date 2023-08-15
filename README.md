@@ -132,7 +132,45 @@ Pasos:
 
 <img src="resources/github_connectar.png" width="70%">
 
-- Listo prodras empezar a conectar tus PRs con Notion
+##### Listo prodras empezar a conectar tus PRs con Notion
+- Lo primero que debemos hacer despues es en github clonar el repositorio o bien si 
+ya lo tienes clonado, debes desarrollar la tarea y una vez desarrollada debes hacer commit desde tu rama en git.
+
+- Una ves hacer commit y push, nos dirigimos a github y aparece la opcion de comparar el pull request
+
+<img src="resources/pull_request.png" width= "70%">
+
+- Le damos click en Compare & pull request
+
+<img src="resources/create_pull.png" width= "70%">
+
+- Despues de esto nos queda hacer la conexion de este commit con notion asi que copiamos el link el pull request
+
+<img src="resources/copiarlink.png" width= "70%">
+
+- Despues nos dirigimos a notion para hacer la conexion 
+
+<img src="resources/Captura desde 2023-08-15 12-34-02.png" width= "70%">
+
+- Pegamos el link de nuestro pull request
+
+<img src="resources/pegamoslink.png" width= "70%">
+
+- Configuramos el repositorio
+
+<img src="resources/configuramos.png" width= "70%">
+
+- Deberia quedarnos de la siguiente forma 
+
+<img src="resources/final.png" width= "70%">
+
+
+- Con estos pasos habremos conectado a notion con github, ahora cuando el lider asepte nuestra full request y haga merge a la rama 
+automaticamente cambiara el estado de la tarea a realizada
+
+
+
+
 
 
 # Miercoles 09 de Agosto:
