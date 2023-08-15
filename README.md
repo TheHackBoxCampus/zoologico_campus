@@ -116,6 +116,8 @@ En Notion, las tareas se gestionan mediante su sistema flexible de bases de dato
 latinoamericacampus233@gmail.com
 <img src="resources/task.png" width="70%" style="margin-top: 20px">
 
+## Como cambiar el estado de las tareas en notion automaticamente con pull Request
+#### 
 
 # Miercoles 09 de Agosto:
 
