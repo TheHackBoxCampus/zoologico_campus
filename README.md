@@ -132,7 +132,10 @@ Pasos:
 
 <img src="resources/github_connectar.png" width="70%">
 
-- Listo prodras empezar a conectar tus PRs con Notion
+##### Listo prodras empezar a conectar tus PRs con Notion
+- Lo primero que debemos hacer despues es en github clonar el repositorio o bien si 
+ya lo tienes clonado, debes desarrollar la tarea y una vez desarrollada debes hacer commit desde tu rama en git.
+
 
 
 # Miercoles 09 de Agosto:
