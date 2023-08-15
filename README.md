@@ -58,6 +58,19 @@ Las principales funciones de un zoo son las siguientes:
 <img src="resources/elefante.jpg" width="50%" style="margin: 30px">
 
 
+
+
+| Tener en cuenta           | Posibles campos a Tener en cuenta                            |
+| ------------------------- | ------------------------------------------------------------ |
+| **Animales**              | - Nombre científico y común. <br />- Origen y hábitat natural.<br />-  Dieta y requisitos alimenticios.<br />  - Información de salud y cuidados veterinarios.<br /> - Comportamiento y necesidades de enriquecimiento.<br /> |
+| **Instalaciones**         | - Diseño y planificación de recintos.<br /> - Tipo de hábitat (selva, sabana, acuático, etc.).<br /> - Elementos de seguridad para los animales y visitantes. <br />- Disposición de jaulas, cercas y áreas de exhibición. |
+| **Cuidados**              | -Rutinas de alimentación y horarios. <br />- Programas de enriquecimiento para estimular comportamientos naturales. <br />- Protocolos de salud y seguimiento veterinario. <br />- Manejo de residuos y limpieza de instalaciones. |
+| **Personal**              | - Roles y responsabilidades del personal (cuidadores, veterinarios, guías, etc.). <br />- Capacitación y formación del personal.<br /> - Turnos y horarios de trabajo. Comunicación interna y gestión de emergencias. |
+| **Clientes y Visitantes** | - Sistema de entradas y boletos. <br />- Horarios de operación y tarifas. <br />- Experiencia del visitante y educación ambiental. <br />- Actividades interactivas, espectáculos y exhibiciones. |
+
+
+
+
 ## ***Modelo entidad relación:***
 
 <img src="resources/mer_zoologico.png" width="80%" style="margin-top: 30px">
@@ -103,6 +116,85 @@ En Notion, las tareas se gestionan mediante su sistema flexible de bases de dato
 
 <img src="resources/task.png" width="70%" style="margin-top: 20px">
 
+
+# Miercoles 09 de Agosto:
+
+## Release en github 
+
+### Concepto de Release
+
+Para entender que es un Release o lanzamiento es necesario que sepas que es una tag o etiqueta. 
+
+### Tag    
+
+Una etiqueta en GitHub es una referencia estática a un punto específico en el historial de versiones de un repositorio de código. Se utiliza para marcar hitos o versiones importantes en el desarrollo de un proyecto. Las etiquetas facilitan la identificación y el acceso rápido a versiones específicas del código, sin tener que buscar en el historial completo.
+
+En resumen o en pocas las palabras las etiquetas se utilizan para marcar puntos específicos en el historial.
+
+- ***Ahora ¿Que es un Release?***
+
+Un release en GitHub es una versión específica de un proyecto que se presenta y documenta de manera organizada para su distribución. Se crea a partir de una etiqueta existente en el repositorio y contiene información detallada, como notas de lanzamiento, cambios y mejoras realizadas en esa versión. Los releases también pueden incluir archivos binarios o de instalación, lo que facilita a los usuarios acceder a la versión exacta y los recursos relacionados.
+
+Si no te quedo muy claro te mostrare las diferencias con un ejemplo: 
+
+### **Etiquetas (Tags):**
+
+Imagina que tienes un repositorio de código y has estado trabajando en él durante un tiempo. Has llegado a un punto en el que sientes que has completado una versión importante de tu proyecto. Para marcar este hito, creas una etiqueta en el repositorio.
+
+Ejemplo:
+
+Has estado trabajando en un editor de texto y has añadido muchas características y arreglado errores.
+Llegas a una versión que consideras "1.0.0" y decides marcarla con una etiqueta.
+Creas una etiqueta llamada "v1.0.0" en el commit que representa esta versión.
+La etiqueta "v1.0.0" marca este punto específico en el historial de versiones de tu repositorio. Ahora, cualquiera que mire el historial podrá ver que en este punto, se lanzó la versión "1.0.0" de tu proyecto.
+
+### **Releases (Lanzamientos):**
+
+Ahora, tomando el mismo ejemplo, vamos a hablar de cómo crear un release a partir de una etiqueta.
+
+Supongamos que después de marcar la etiqueta "v1.0.0", decides crear un release para esta versión específica.
+
+Ejemplo:
+
+Creas un release con el título "Versión 1.0.0" y las notas de lanzamiento detallando todas las características nuevas y los errores corregidos en esta versión.
+Adjuntas archivos binarios, como paquetes de instalación, junto con el release.
+Publicas el release en GitHub.
+El release "Versión 1.0.0" es ahora una página específica en tu repositorio que proporciona información detallada sobre esta versión. Las personas pueden acceder a las notas de lanzamiento y descargar los archivos adjuntos, lo que facilita para ellos obtener la versión exacta que lanzaste.
+
+OK, ya que esta mas claro el concepto y las diferencias te mostrare como hacerlo en github: 
+
+- Inicias Sesion con tus credenciales
+
+- Entras al repositorio donde quiero crear el Release
+
+- En la parte de la derecha, arriba de las seccion de packages encontraras la opcion de releases, le daras click en la opcion de ´´new releases´´ (Nuevos lanzamientos)
+
+<img src="resources/releases_github1.png" width="70%">
+
+Completa la siguiente información en el formulario:
+
+- Tag version (Versión de la etiqueta): Esto es generalmente un número de versión, como "v1.0.0".
+Release title (Título del release): Un título descriptivo para el release.
+
+- Write (Escribe): Aquí puedes proporcionar una descripción detallada de los cambios incluidos en este release. Puedes utilizar formato Markdown para dar formato al texto.
+
+- Attach binaries (Adjuntar binarios): Si deseas adjuntar archivos binarios a este release, puedes hacerlo aquí.
+Pre-release (Pre-lanzamiento): Si esta versión es una versión preliminar o de prueba, marca esta casilla.
+
+<img src="resources/rellenar_informacion_release.png" width="70%">
+
+- Agrega cambios adicionales (opcional):
+Si tienes un archivo "CHANGELOG" o una lista de cambios importantes, considera agregar un enlace o un resumen en el campo de escritura.
+
+- Adjunta archivos binarios (opcional):
+Si deseas adjuntar archivos binarios, como paquetes de instalación, haz clic en "Attach binaries" y selecciona los archivos relevantes.
+
+- Publica el release:
+Después de completar toda la información necesaria, haz clic en el botón "Publish release" (Publicar release). El release se creará y estará disponible para que otros usuarios lo vean y lo descarguen.
+
+<img src="resources/publicar_release.png" width="40%">
+
+Una vez que hayas completado estos pasos, habrás creado un release en GitHub con la información que proporcionaste. Los releases son una excelente manera de organizar las diferentes versiones de tu proyecto y facilitar la descarga y el seguimiento de los cambios importantes.
 
 ## Contacto 
 
