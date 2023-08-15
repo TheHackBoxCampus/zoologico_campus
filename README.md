@@ -113,7 +113,7 @@ En Notion, las tareas se gestionan mediante su sistema flexible de bases de dato
 <img src="resources/bd.png" width="40%" style="margin-top: 20px">
 
 - Define y organiza las propiedades y campos de forma personalizada: 
-
+latinoamericacampus233@gmail.com
 <img src="resources/task.png" width="70%" style="margin-top: 20px">
 
 
