@@ -1,0 +1,22 @@
+{
+  "name": "zoologico_campus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --quiet src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "16.3.1",
+    "express": "4.18.2",
+    "express-rate-limit": "6.9.0",
+    "express-routes-versioning": "1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "3.0.1"
+  }
+}
