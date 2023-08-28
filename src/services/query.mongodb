@@ -1,0 +1,138 @@
+
+
+// * Funcion para los ids Autoincrementables
+
+function aumentarId (categoria, id){
+    use("zoologico_campus");
+    let data = db[categoria].find().sort({[id]: -1}).toArray();
+    if(data.length < 1) return 1; 
+    
+    let lastNumber = data[0][id];
+    return lastNumber + 1;
+}
+//* Creacion de la coleccion especie
+db.createCollection('especie', {
+    validator: {
+        $jsonSchema: {
+            title: "coleccion para especie",
+            bsonType: "object",
+            required: ["id_especie", "nombre_especie", "descripcion_especie", "clasificacion",],
+            properties: {
+                id_especie: {
+                    bsonType: "int"
+
+                },
+                nombre_especie: {
+                    bsonType: "string",
+                    pattern: "^[a-zA-Z]+$"
+
+                },
+                descripcion_especie: {
+                    bsonType: "string",
+                },
+                clasificacion: {
+                    bsonType: "string",
+                },
+            }
+        }
+    }
+})
+// Establecimiento de los campos unicos
+use("zoologico_campus");
+db.especie.createIndex(
+    { id_especie: 1, nombre_especie: 1 },
+    { unique: true }
+);
+
+
+use("zoologico_campus");
+db.especie.insertOne({
+    id_especie: 2,
+    nombre_especie: "leon",
+    descripcion_especie: "la mejor especie de la tierra",
+    clasificacion: "terrestre"
+});
+
+// creacion de la coleccion subespecie
+db.createCollection('subespecie', {
+    validator: {
+        $jsonSchema: {
+            title: "coleccion para especie",
+            bsonType: "object",
+            required: ["id_subespecie", "id_especie", "nombre_subespecie", "descripcion","cantidad"],
+            properties: {
+                id_subespecie: {
+                    bsonType: "int"
+                },
+                id_especie: {
+                    bsonType: "int",
+                },
+                nombre_subespecie: {
+                    bsonType: "string",
+                    pattern: "^[a-zA-Z]+$"
+                },
+                descripcion: {
+                    bsonType: "string",
+                },
+                cantidad:{
+                    bsonType:"int"
+                }
+            }
+        }
+    }
+})
+// Establecimiento de los campos unicos
+use("zoologico_campus");
+db.subespecie.createIndex(
+    { id_subespecie: 1 },
+    { unique: true }
+);
+use("zoologico_campus");
+
+db.subespecie.createIndex(
+    { nombre_subespecie: 1},
+    { unique: true }
+);
+
+use("zoologico_campus");
+db.subespecie.insertOne(
+        {
+            id_subespecie: aumentarId("subespecie", "id_subespecie"),
+            id_especie: 2,
+            nombre_subespecie: "Leon americano",
+            descripcion: "leon de america",
+            cantidad: 10,
+        }
+);
+
+use("zoologico_campus");
+db.subespecie.insertOne(
+    {
+        id_subespecie: aumentarId("subespecie", "id_subespecie"),
+        id_especie: 2,
+        nombre_subespecie: "Leon azul",
+        descripcion: "leon de america",
+        cantidad: 2,
+    }
+);
+use("zoologico_campus");
+db.subespecie.insertOne(
+    {
+        id_subespecie: aumentarId("subespecie", "id_subespecie"),
+        id_especie: 2,
+        nombre_subespecie: "Leon rojo",
+        descripcion: "leon de america",
+        cantidad: 3,
+    }
+);
+use("zoologico_campus");
+db.subespecie.insertOne(
+    {
+        id_subespecie: aumentarId("subespecie", "id_subespecie"),
+        id_especie: 2,
+        nombre_subespecie: "Leon amarillo",
+        descripcion: "leon de america",
+        cantidad: 6,
+    }
+);
+
