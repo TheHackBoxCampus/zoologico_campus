@@ -619,14 +619,6 @@ db.visitante.createIndex(
     { id_visitante: 1 },
     { unique: true }
 );
-function aumentarId (categoria, id){
-    use("zoologico_campus");
-    let data = db[categoria].find().sort({[id]: -1}).toArray();
-    if(data.length < 1) return 1; 
-    
-    let lastNumber = data[0][id];
-    return lastNumber + 1;
-}
 // ? Insercion de data
 use("zoologico_campus");
 db.visitante.insertOne({
