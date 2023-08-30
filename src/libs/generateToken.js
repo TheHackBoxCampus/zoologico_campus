@@ -10,16 +10,6 @@ const generateToken = async (payload) => {
     })
 }
 
-const validateToken = async (col) => {
-    try {
-        let db = await conx(); 
-        let collection = await db.collection(col)
-
-    } catch (error) {
-        console.log(error)
-    }
-}
-
 export {
     generateToken
 }
