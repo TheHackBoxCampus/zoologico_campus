@@ -1,5 +1,3 @@
-
-
 // * Funcion para los ids Autoincrementables
 
 function aumentarId (categoria, id){
@@ -417,7 +415,7 @@ db.veterinario.insertOne({
     salario: 5500.1,
     fecha_contratacion: new Date("2020-11-15")
 });
-
+/* 
 
 // !
 // * creacion de la coleccion empleado
@@ -427,7 +425,7 @@ db.createCollection('empleado', {
         $jsonSchema: {
             title: "coleccion para empleado",
             bsonType: "object",
-            required: ["id_empleado", "id_recinto", "nombre", "apellido","email","genero",
+            required: ["id_empleado", "id_recinto","id_rol" ,"nombre", "apellido","email","genero",
             "cargo", "fecha_contratacion","salario","telefono","field"],
             properties: {
                 id_empleado: {
@@ -435,6 +433,9 @@ db.createCollection('empleado', {
                 },
                 id_recinto: {
                     bsonType: "int",
+                },
+                id_rol: {
+                    bsonType: "int"
                 },
                 nombre: {
                     bsonType: "string",
@@ -483,6 +484,7 @@ use("zoologico_campus");
 db.empleado.insertOne({
     id_empleado: aumentarId("empleado", "id_empleado"),
     id_recinto: 1,
+    id_rol:1,
     nombre: "Ana",
     apellido: "García",
     email: "ana@example.com",
@@ -493,7 +495,7 @@ db.empleado.insertOne({
     telefono: "983210",
     field: "Biología"
 });
-
+ */
 
 // !
 // * creacion de la coleccion resinto
@@ -566,16 +568,16 @@ db.recinto.insertOne({
 });
 
 
-
+/* 
 // !
-// * creacion de la coleccion resinto
+// * creacion de la coleccion visitante
 use("zoologico_campus");
-db.createCollection('visitantes', {
+db.createCollection('visitante', {
     validator: {
         $jsonSchema: {
-            title: "coleccion para visitantes",
+            title: "coleccion para visitante",
             bsonType: "object",
-            required: ["id_visitante", "id_recinto", "nombre", "apellido","fecha_nacimiento","genero","pais_origen",
+            required: ["id_visitante", "id_recinto", "id_rol","nombre", "apellido","fecha_nacimiento","genero","pais_origen",
             "fecha_visita", "ticket_entrada","comentarios"],
             properties: {
                 id_visitante: {
@@ -583,6 +585,9 @@ db.createCollection('visitantes', {
                 },
                 id_recinto: {
                     bsonType: "int",
+                },
+                id_rol:{
+                    bsonType:"int"
                 },
                 nombre: {
                     bsonType: "string",
@@ -618,12 +623,22 @@ use("zoologico_campus");
 db.visitante.createIndex(
     { id_visitante: 1 },
     { unique: true }
-);
+); */
+function aumentarId (categoria, id){
+    use("zoologico_campus");
+    let data = db[categoria].find().sort({[id]: -1}).toArray();
+    if(data.length < 1) return 1; 
+    
+    let lastNumber = data[0][id];
+    return lastNumber + 1;
+}
+
 // ? Insercion de data
 use("zoologico_campus");
 db.visitante.insertOne({
-    id_recinto: aumentarId("recinto", "id_recinto"),
+    id_visitante: aumentarId("visitante", "id_visitante"),
     id_recinto: 1,
+    id_rol:2,
     nombre: "Luisa",
     apellido: "Martínez",
     fecha_nacimiento: new Date("1995-08-20"),
@@ -636,3 +651,125 @@ db.visitante.insertOne({
 
 
 
+
+// !
+// * creacion de la coleccion roles
+use("zoologico_campus");
+db.createCollection('rol', {
+    validator: {
+        $jsonSchema: {
+            title: "coleccion para roles",
+            bsonType: "object",
+            required: ["id_rol", "nombre_rol", "permisos"],
+            properties: {
+                id_rol: {
+                    bsonType: "int"
+                },
+                nombre_rol: {
+                    bsonType: "string",
+                    enum:["cliente","empleado"]
+                },
+                permisos: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "string",
+                        enum: ["get", "put", "post", "delete"]
+                    }
+                }
+            }
+        }
+    }
+})
+// ^ Establecimiento de los campos unicos
+use("zoologico_campus");
+db.rol.createIndex(
+    { id_rol: 1 },
+    { unique: true }
+);
+// ? Insercion de data
+function aumentarId (categoria, id){
+    use("zoologico_campus");
+    let data = db[categoria].find().sort({[id]: -1}).toArray();
+    if(data.length < 1) return 1; 
+    
+    let lastNumber = data[0][id];
+    return lastNumber + 1;
+}
+
+use("zoologico_campus");
+db.rol.insertOne({
+    id_rol: aumentarId("rol", "id_rol"),
+    nombre_rol: "empleado",
+    permisos: ["get","put","post"],
+});
+
+
+
+// !
+// * creacion de la coleccion empleado
+use("zoologico_campus");
+db.createCollection('usuario', {
+    validator: {
+        $jsonSchema: {
+            title: "coleccion para usuario",
+            bsonType: "object",
+            required: ["id_usuario", "id_recinto","id_rol" ,"nombre", "apellido","email","genero",
+            "telefono"],
+            properties: {
+                id_usuario: {
+                    bsonType: "int"
+                },
+                id_recinto: {
+                    bsonType: "int",
+                },
+                id_rol: {
+                    bsonType: "int"
+                },
+                nombre: {
+                    bsonType: "string",
+                },
+                apellido: {
+                    bsonType: "string",
+                },
+                email:{
+                    bsonType:"string",
+                },
+                genero:{
+                    bsonType:"string",
+                    enum:["Masculino","Femenino"]
+                },
+                telefono:{
+                    bsonType:"string"
+                }
+            }
+        }
+    }
+})
+// ^ Establecimiento de los campos unicos
+use("zoologico_campus");
+db.usuario.createIndex(
+    { id_usuario: 1 },
+    { unique: true }
+);
+
+
+function aumentarId (categoria, id){
+    use("zoologico_campus");
+    let data = db[categoria].find().sort({[id]: -1}).toArray();
+    if(data.length < 1) return 1; 
+    
+    let lastNumber = data[0][id];
+    return lastNumber + 1;
+}
+// ? Insercion de data
+use("zoologico_campus");
+db.usuario.insertOne({
+    id_usuario: aumentarId("usuario", "id_usuario"),
+    id_recinto: 1,
+    id_rol:1,
+    nombre: "Ana",
+    apellido: "Cabello",
+    email: "ana@example.com",
+    genero: "Femenino",
+    telefono: "1231231"
+});
