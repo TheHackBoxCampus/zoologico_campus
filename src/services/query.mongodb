@@ -1,5 +1,3 @@
-
-
 // * Funcion para los ids Autoincrementables
 
 function aumentarId (categoria, id){
