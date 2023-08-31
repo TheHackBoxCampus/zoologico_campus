@@ -1,7 +1,7 @@
 import {Router} from "express";
 import limit from "../limits/setting.limit.js"
 import routesVersioning from "express-routes-versioning";
-
+import { validateToken } from "../middlewares/validateToken.js";
 /**
  * ! Versions controllers
  */
@@ -19,6 +19,6 @@ const version = routesVersioning();
  * ! Routers
  */
 
-Router_specie.get("/especies", limit, version(getRelationsForSpecieAndSubSpecieVersions))
+Router_specie.get("/especies", limit, validateToken, version(getRelationsForSpecieAndSubSpecieVersions))
 
 export default Router_specie; 
