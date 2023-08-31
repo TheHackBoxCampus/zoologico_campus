@@ -1,14 +1,12 @@
 import aumentaId from "../../services/aumentaId.js";
 import { conx } from "../../config/db.js";
 
-const db = await conx();
-const alimentacion = db.collection('alimentacion');
-
-
 // * Me retorna todas las alimentaciones del los animales
 //*  http://localhost:5000/Alimentacion
 const getAlimentacionAll = async (req, res) => {
     try {
+        const db = await conx();
+        const alimentacion = db.collection('alimentacion');
         let result = await alimentacion.find().sort({ id_alimentacion: -1 }).toArray();
         res.send(result);
     } catch (error) {
@@ -23,6 +21,8 @@ const getAlimentacionAll = async (req, res) => {
 // *   http://localhost:5701/Alimentacion/1
 const getAlimentoSpacific = async (req, res) => {
     try {
+        const db = await conx();
+        const alimentacion = db.collection('alimentacion');
         let id = parseInt(req.params.id_alimentacion);
         let result = await alimentacion.find({ id_alimentacion: id }).toArray();
         res.send(result);
@@ -36,6 +36,8 @@ const getAlimentoSpacific = async (req, res) => {
 // * http://localhost:5701/Alimentacion/animal/leon
 const getAlimentacionAnimal = async (req, res) => {
     try {
+        const db = await conx();
+        const alimentacion = db.collection('alimentacion');
         let NomAnimal = req.params.nombre_animal;
         console.log(NomAnimal);
         let result = await alimentacion.aggregate([
@@ -80,6 +82,8 @@ const getAlimentacionAnimal = async (req, res) => {
 */
 const PostAlimentacion = async (req, res) => {
     try {
+        const db = await conx();
+        const alimentacion = db.collection('alimentacion');
         let datos = req.body;
         let dataInsert = {
             id_alimentacion: await aumentaId("alimentacion", "id_alimentacion"),

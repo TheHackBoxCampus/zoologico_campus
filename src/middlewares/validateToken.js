@@ -2,7 +2,7 @@ import passport from "../passport/setting.passport.js";
 
 const validateToken = async (req, res, next) => {
     passport.authenticate("bearer", {session: false}, (err, decoded) => {
-        if(err) return res.status(403).send({status: 401, message: "Autenticacion invalida"})
+        if(!decoded) return res.status(403).send({status: 401, message: "Autenticacion invalida"})
         else {
             let permissions = decoded; 
             let method = (req.method).toLowerCase(); 
