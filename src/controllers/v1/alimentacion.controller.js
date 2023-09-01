@@ -1,6 +1,6 @@
 import aumentaId from "../../services/aumentaId.js";
 import { conx } from "../../config/db.js";
-
+import { validationResult } from "express-validator";
 const db = await conx();
 const alimentacion = db.collection('alimentacion');
 
@@ -9,6 +9,7 @@ const alimentacion = db.collection('alimentacion');
 //*  http://localhost:5000/Alimentacion
 const getAlimentacionAll = async (req, res) => {
     try {
+        console.log(req.body);
         let result = await alimentacion.find().sort({ id_alimentacion: -1 }).toArray();
         res.send(result);
     } catch (error) {
@@ -36,6 +37,8 @@ const getAlimentoSpacific = async (req, res) => {
 // * http://localhost:5701/Alimentacion/animal/leon
 const getAlimentacionAnimal = async (req, res) => {
     try {
+        let error = validationResult(req.body);
+        console.log(error);
         let NomAnimal = req.params.nombre_animal;
         console.log(NomAnimal);
         let result = await alimentacion.aggregate([
