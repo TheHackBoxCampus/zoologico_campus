@@ -21,13 +21,14 @@ const getAlimentacionAll = async (req, res) => {
 // *   http://localhost:5701/Alimentacion/1
 const getAlimentoSpacific = async (req, res) => {
     try {
+        if(isNaN(req.params.id_alimentacion)) throw ("El id debe ser entero");
         const db = await conx();
         const alimentacion = db.collection('alimentacion');
         let id = parseInt(req.params.id_alimentacion);
         let result = await alimentacion.find({ id_alimentacion: id }).toArray();
         res.send(result);
     } catch (error) {
-        res.sendStatus(500);
+        res.status(400).send({status:400, message:error});
         console.log(error);
     }
 }
