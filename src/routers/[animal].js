@@ -25,7 +25,7 @@ const version = routesVersioning();
 
 Router_animal.get("/animales", limit, validateToken, version(getAnimalsVersions));
 Router_animal.get("/animales/:id", limit, validateToken, version(getAnimalSpecficVersions));
-Router_animal.get("/especie", limit, validateToken, version(getAnimalForSpecieVersions));
+Router_animal.get("/animal", limit, validateToken, version(getAnimalForSpecieVersions));
 Router_animal.get("/cantidad/especie",limit, validateToken, version(getCountForSpecieVersions));
 
 export default Router_animal;
