@@ -506,6 +506,12 @@ function aumentarId (categoria, id){
     let lastNumber = data[0][id];
     return lastNumber + 1;
 }
+use("zoologico_campus");
+db.rol.insertOne({
+    id_rol: aumentarId("rol", "id_rol"),
+    nombre_rol: "cliente",
+    permisos: ["get"],
+});
 
 use("zoologico_campus");
 db.rol.insertOne({
@@ -582,5 +588,16 @@ db.usuario.insertOne({
     apellido: "Cabello",
     email: "ana@example.com",
     genero: "Femenino",
+    telefono: "1231231"
+});
+use("zoologico_campus");
+db.usuario.insertOne({
+    id_usuario: aumentarId("usuario", "id_usuario"),
+    id_recinto: 1,
+    id_rol:2,
+    nombre: "Miller",
+    apellido: "Cabello",
+    email: "ana@example.com",
+    genero: "Masculino",
     telefono: "1231231"
 });
