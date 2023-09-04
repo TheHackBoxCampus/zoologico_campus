@@ -21,7 +21,7 @@ const version = routesVersioning();
     ^ Endpoinds de alimentacion
 */
 
-router_alimento.get('/alimentacion',limit, version(getAlimentacionVersions));
+router_alimento.get('/alimentacion',limit, validateToken,version(getAlimentacionVersions));
 router_alimento.get('/alimentacion/:id_alimentacion', limit, validateToken, version(getAlimentacionSpecificVercions));
 router_alimento.get('/alimentacion/animal/:nombre_animal', limit, validateToken, version(getAlimentacionAnimalVercion   ));
 router_alimento.post('/alimentacion/insertar', limit, dtoAnimales, ValidaBody ,validateToken, version(PostAlimantacionVercion));
