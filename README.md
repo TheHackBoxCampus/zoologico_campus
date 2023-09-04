@@ -264,7 +264,11 @@ Una vez que hayas completado estos pasos, habrás creado un release en GitHub co
 > git clone https://github.com/TheHackBoxCampus/zoologico_campus.git
 > cd zoologico_campus 
 ```
+## Instalar las dependencias
 
+```bash
+npm update || npm i
+```
 ## Crea el archivo de enviroments: 
 
 - En la raiz del proyecto, crea un archivo ``.env``
