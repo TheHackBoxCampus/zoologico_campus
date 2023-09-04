@@ -10,6 +10,7 @@ function aumentarId (categoria, id){
 }
 // !
 // * Creacion de la coleccion especie
+use("zoologico_campus");
 db.createCollection('especie', {
     validator: {
         $jsonSchema: {
@@ -51,6 +52,7 @@ db.especie.insertOne({
 
 // !
 // * creacion de la coleccion subespecie
+use("zoologico_campus");
 db.createCollection('subespecie', {
     validator: {
         $jsonSchema: {
@@ -66,7 +68,7 @@ db.createCollection('subespecie', {
                 },
                 nombre_subespecie: {
                     bsonType: "string",
-                    pattern: "^[a-zA-Z]+$"
+                    pattern: "^[a-zA-Z ]+$"
                 },
                 descripcion: {
                     bsonType: "string",
@@ -90,6 +92,15 @@ db.subespecie.createIndex(
 );
 // ? Insercion de data
 use("zoologico_campus");
+
+function aumentarId (categoria, id){
+    use("zoologico_campus");
+    let data = db[categoria].find().sort({[id]: -1}).toArray();
+    if(data.length < 1) return 1; 
+    
+    let lastNumber = data[0][id];
+    return lastNumber + 1;
+}
 db.subespecie.insertOne(
     {
     id_subespecie: aumentarId("subespecie", "id_subespecie"),
@@ -97,8 +108,7 @@ db.subespecie.insertOne(
     nombre_subespecie: "Leon americano",
     descripcion: "leon de america",
     cantidad: 10,
-}
-);
+});
 db.subespecie.insertOne(
     {
         id_subespecie: aumentarId("subespecie", "id_subespecie"),
@@ -135,7 +145,7 @@ db.createCollection('animal', {
         $jsonSchema: {
             title: "coleccion para especie",
             bsonType: "object",
-            required: ["id_animal", "id_subespecie", "id_recinto", "nombre","fecha_nacimiento","genero","pais_origen","descripcion","url_imagen","fiald"],
+            required: ["id_animal", "id_subespecie", "id_recinto", "nombre","fecha_nacimiento","genero","pais_origen","descripcion","url_imagen","entorno"],
             properties: {
                 id_animal: {
                     bsonType: "int"
@@ -166,7 +176,7 @@ db.createCollection('animal', {
                 url_imagen:{
                     bsonType:"string"
                 },
-                fiald:{
+                entorno:{
                     bsonType:"string"
                 }
             }
@@ -195,7 +205,7 @@ db.animal.insertOne({
     pais_origen:"Brazil",
     descripcion:"Es una mini selva",
     url_imagen:"https://thumbs.dreamstime.com/z/mini-selva-en-un-d%C3%ADa-verde-92532232.jpg",
-    fiald:"No se para que es este campo XD",
+    entorno:"Silvestre",
 });
 db.animal.insertOne({
     id_animal: aumentarId("animal", "id_animal"),
@@ -207,7 +217,7 @@ db.animal.insertOne({
     pais_origen:"Brazil",
     descripcion:"Es una mini selva",
     url_imagen:"https://thumbs.dreamstime.com/z/mini-selva-en-un-d%C3%ADa-verde-92532232.jpg",
-    fiald:"No se para que es este campo XD",
+    entorno:"Silvestre",
 });
 db.animal.insertOne({
     id_animal: aumentarId("animal", "id_animal"),
@@ -219,7 +229,7 @@ db.animal.insertOne({
     pais_origen:"Canada",
     descripcion:"Es un mini estanque",
     url_imagen:"https://thumbs.dreamstime.com/z/mini-selva-en-un-d%C3%ADa-verde-92532232.jpg",
-    fiald:"No se para que es este campo XD",
+    entorno:"Silvestre",
 });
 db.animal.insertOne({
     id_animal: aumentarId("animal", "id_animal"),
@@ -231,7 +241,7 @@ db.animal.insertOne({
     pais_origen:"Brazil",
     descripcion:"Es una mini selva",
     url_imagen:"https://thumbs.dreamstime.com/z/mini-selva-en-un-d%C3%ADa-verde-92532232.jpg",
-    fiald:"No se para que es este campo XD",
+    entorno:"Silvestre",
 });
 
 // !
@@ -278,6 +288,15 @@ db.alimentacion.insertOne({
     hora_alimentacion: "08:30 am",
     cantidad: 3
 });
+use("zoologico_campus");
+db.alimentacion.insertOne({
+    id_alimentacion: aumentarId("alimentacion", "id_alimentacion"),
+    id_animal: 2,
+    tipo_alimento: "Carne",
+    hora_alimentacion: "08:30 am",
+    cantidad: 3
+});
+
 
 
 // !
@@ -415,215 +434,7 @@ db.veterinario.insertOne({
     salario: 5500.1,
     fecha_contratacion: new Date("2020-11-15")
 });
-/* 
 
-// !
-// * creacion de la coleccion empleado
-use("zoologico_campus");
-db.createCollection('empleado', {
-    validator: {
-        $jsonSchema: {
-            title: "coleccion para empleado",
-            bsonType: "object",
-            required: ["id_empleado", "id_recinto","id_rol" ,"nombre", "apellido","email","genero",
-            "cargo", "fecha_contratacion","salario","telefono","field"],
-            properties: {
-                id_empleado: {
-                    bsonType: "int"
-                },
-                id_recinto: {
-                    bsonType: "int",
-                },
-                id_rol: {
-                    bsonType: "int"
-                },
-                nombre: {
-                    bsonType: "string",
-                },
-                apellido: {
-                    bsonType: "string",
-                },
-                email:{
-                    bsonType:"string",
-                },
-                genero:{
-                    bsonType:"string",
-                    enum:["Masculino","Femenino"]
-                },
-                cargo:{
-                    bsonType:"string"
-                },
-                fecha_contratacion:{
-                    bsonType:"date"
-                },
-                salario:{
-                    bsonType:"double"
-                },
-                telefono:{
-                    bsonType:"string"
-                },
-                field:{
-                    bsonType:"string"
-                }
-            }
-        }
-    }
-})
-// ^ Establecimiento de los campos unicos
-use("zoologico_campus");
-db.empleado.createIndex(
-    { id_empleado: 1 },
-    { unique: true }
-);
-db.empleado.createIndex(
-    { nombre: 1, apellido:1 },
-    { unique: true }
-);
-// ? Insercion de data
-use("zoologico_campus");
-db.empleado.insertOne({
-    id_empleado: aumentarId("empleado", "id_empleado"),
-    id_recinto: 1,
-    id_rol:1,
-    nombre: "Ana",
-    apellido: "García",
-    email: "ana@example.com",
-    genero: "Femenino",
-    cargo: "Cuidador de animales",
-    fecha_contratacion: new Date("2022-03-10"),
-    salario: 45000.11,
-    telefono: "983210",
-    field: "Biología"
-});
- */
-
-// !
-// * creacion de la coleccion resinto
-use("zoologico_campus");
-db.createCollection('recinto', {
-    validator: {
-        $jsonSchema: {
-            title: "coleccion para recinto",
-            bsonType: "object",
-            required: ["id_recinto", "nombre", "tamaño", "tipo_recinto","tema_recinto","capacidad_maxima","catracteristicas",
-            "horarios_exhibicion", "coordenadas_gps","descripcion","url_imagen"],
-            properties: {
-                id_recinto: {
-                    bsonType: "int"
-                },
-                nombre: {
-                    bsonType: "string",
-                },
-                tamaño: {
-                    bsonType: "string",
-                },
-                tipo_recinto: {
-                    bsonType: "string",
-                },
-                tema_recinto:{
-                    bsonType:"string",
-                },
-                capacidad_maxima:{
-                    bsonType:"string",
-                },
-                catracteristicas:{
-                    bsonType:"string"
-                },
-                horarios_exhibicion:{
-                    bsonType:"string"
-                },
-                coordenadas_gps:{
-                    bsonType:"string"
-                },
-                descripcion:{
-                    bsonType:"string"
-                },
-                url_imagen:{
-                    bsonType:"string"
-                }
-            }
-        }
-    }
-})
-// ^ Establecimiento de los campos unicos
-use("zoologico_campus");
-db.recinto.createIndex(
-    { id_recinto: 1 },
-    { unique: true }
-);
-// ? Insercion de data
-use("zoologico_campus");
-db.recinto.insertOne({
-    id_recinto: aumentarId("recinto", "id_recinto"),
-    nombre: "Recinto de Leones",
-    tamaño: "Grande",
-    tipo_recinto: "Cerrado",
-    tema_recinto: "Safari",
-    capacidad_maxima: "50 personas",
-    catracteristicas: "Simula un entorno de safari africano",
-    horarios_exhibicion: "10:00 AM - 4:00 PM",
-    coordenadas_gps: "37.12345, -122.67890",
-    descripcion: "Un recinto impresionante con leones majestuosos",
-    url_imagen: "https://ejemplo.com/imagen_recinto_leones.jpg"
-});
-
-
-/* 
-// !
-// * creacion de la coleccion visitante
-use("zoologico_campus");
-db.createCollection('visitante', {
-    validator: {
-        $jsonSchema: {
-            title: "coleccion para visitante",
-            bsonType: "object",
-            required: ["id_visitante", "id_recinto", "id_rol","nombre", "apellido","fecha_nacimiento","genero","pais_origen",
-            "fecha_visita", "ticket_entrada","comentarios"],
-            properties: {
-                id_visitante: {
-                    bsonType: "int"
-                },
-                id_recinto: {
-                    bsonType: "int",
-                },
-                id_rol:{
-                    bsonType:"int"
-                },
-                nombre: {
-                    bsonType: "string",
-                },
-                apellido: {
-                    bsonType: "string",
-                },
-                fecha_nacimiento:{
-                    bsonType:"date",
-                },
-                genero:{
-                    bsonType:"string",
-                    enum:["Masculino","Femenino"]
-                },
-                pais_origen:{
-                    bsonType:"string"
-                },
-                fecha_visita:{
-                    bsonType:"date"
-                },
-                ticket_entrada:{
-                    bsonType:"string"
-                },
-                comentarios:{
-                    bsonType:"string"
-                }
-            }
-        }
-    }
-})
-// ^ Establecimiento de los campos unicos
-use("zoologico_campus");
-db.visitante.createIndex(
-    { id_visitante: 1 },
-    { unique: true }
-); */
 function aumentarId (categoria, id){
     use("zoologico_campus");
     let data = db[categoria].find().sort({[id]: -1}).toArray();
